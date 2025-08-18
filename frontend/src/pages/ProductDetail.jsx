@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { getProductDetail } from '../api/products';
-import axios from 'axios';
 import './ProductDetail.css';
-
+import { addToCart } from '../api/cart';
+const BASE_URL = 'https://bookstore-app-e464.onrender.com';
 export const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -20,21 +20,19 @@ export const ProductDetail = () => {
     };
     fetchProduct();
   }, [id]);
-
+  const navigate = useNavigate();
   const handleAddToCart = async () => {
     const token = localStorage.getItem('access_token');
     if (!token) {
       alert('Please login first');
+      navigate('/login')
       return;
     }
 
     try {
-      await axios.post(
-        'http://localhost:8000/api/cart/add_item/',
-        { product: id, quantity },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      await addToCart(id, quantity);
       alert('Added to cart!');
+      navigate('/cart')
     } catch (err) {
       console.error(err);
       alert('Error adding to cart');
@@ -47,7 +45,7 @@ export const ProductDetail = () => {
     <div className="product-detail-container">
       <h2>{product.name}</h2>
       <p className="description">{product.description}</p>
-      <p className="price">${product.price}</p>
+      <p className="price">Rs.{product.price}</p>
       <div className="quantity-container">
         <label>Quantity:</label>
         <input

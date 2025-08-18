@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   adminGetProducts,
   adminDeleteProduct,
@@ -10,6 +11,7 @@ import "./AdminDashboard.css";
 export default function AdminDashboard() {
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     try {
@@ -42,7 +44,10 @@ export default function AdminDashboard() {
       <h1>Admin Dashboard</h1>
 
       <section>
-        <h2>Products</h2>
+        <div className="section-header">
+          <h2>Products</h2>
+          <button onClick={() => navigate("/admin/products/add")}>+ Add Product</button>
+        </div>
         <table>
           <thead>
             <tr>
@@ -57,8 +62,9 @@ export default function AdminDashboard() {
               <tr key={p.id}>
                 <td>{p.id}</td>
                 <td>{p.name}</td>
-                <td>${p.price}</td>
+                <td>Rs.{p.price}</td>
                 <td>
+                  <button onClick={() => navigate(`/admin/products/${p.id}/edit`)}>Edit</button>
                   <button onClick={() => handleDeleteProduct(p.id)}>Delete</button>
                 </td>
               </tr>
@@ -84,7 +90,7 @@ export default function AdminDashboard() {
               <tr key={o.id}>
                 <td>{o.id}</td>
                 <td>{o.user.username}</td>
-                <td>${o.total_price}</td>
+                <td>Rs.{o.total_price}</td>
                 <td>{o.status}</td>
                 <td>
                   <select

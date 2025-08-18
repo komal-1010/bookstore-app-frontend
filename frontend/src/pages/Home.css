@@ -43,3 +43,35 @@
 .btn:hover {
   background-color: #0056b3;
 }
+
+/* Center loader vertically and horizontally */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px; /* or any height you want */
+  font-size: 1.2rem;
+  color: #555;
+  gap: 10px;
+}
+
+/* Simple spinner style */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #3498db; /* Blue */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

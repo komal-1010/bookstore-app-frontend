@@ -7,6 +7,8 @@ import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
 import { ProductDetail } from './pages/ProductDetail';
 import AdminDashboard from './pages/AdminDashboard';
+import AddProductPage from './pages/AddProductPage';
+import EditProductPage from './pages/EditProductPage';
 function App() {
   return (
     <Router>
@@ -19,6 +21,8 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/order-confirmation/:id" element={<OrderConfirmation />} />
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/products/add" element={<AddProductPage />} />
+        <Route path="/admin/products/:id/edit" element={<EditProductPage />} />
       </Routes>
     </Router>
   );
