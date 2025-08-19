@@ -37,7 +37,7 @@ export const Home = () => {
           <div key={product.id} className="product-card">
             <h3>{product.name}</h3>
             <p>{product.description}</p>
-            <p className="price">Rs.{product.price}</p>
+            <p className="price">${product.price}</p>
             <Link to={`/products/${product.id}`} className="btn">
               View Details
             </Link>

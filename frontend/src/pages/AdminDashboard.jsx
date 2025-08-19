@@ -62,7 +62,7 @@ export default function AdminDashboard() {
               <tr key={p.id}>
                 <td>{p.id}</td>
                 <td>{p.name}</td>
-                <td>Rs.{p.price}</td>
+                <td>${p.price}</td>
                 <td>
                   <button onClick={() => navigate(`/admin/products/${p.id}/edit`)}>Edit</button>
                   <button onClick={() => handleDeleteProduct(p.id)}>Delete</button>
@@ -90,7 +90,7 @@ export default function AdminDashboard() {
               <tr key={o.id}>
                 <td>{o.id}</td>
                 <td>{o.user.username}</td>
-                <td>Rs.{o.total_price}</td>
+                <td>${o.total_price}</td>
                 <td>{o.status}</td>
                 <td>
                   <select

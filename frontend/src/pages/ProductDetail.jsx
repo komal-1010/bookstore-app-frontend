@@ -3,7 +3,7 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { getProductDetail } from '../api/products';
 import './ProductDetail.css';
 import { addToCart } from '../api/cart';
-const BASE_URL = 'https://bookstore-app-e464.onrender.com';
+
 export const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -45,7 +45,7 @@ export const ProductDetail = () => {
     <div className="product-detail-container">
       <h2>{product.name}</h2>
       <p className="description">{product.description}</p>
-      <p className="price">Rs.{product.price}</p>
+      <p className="price">${product.price}</p>
       <div className="quantity-container">
         <label>Quantity:</label>
         <input

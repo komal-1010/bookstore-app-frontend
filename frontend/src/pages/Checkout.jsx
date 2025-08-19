@@ -14,7 +14,6 @@ export default function Checkout() {
     e.preventDefault();
     try {
       const res = await placeOrder(shippingAddress);
-      console.log("res", res)
       const orderId = res.data.id;
 
       // 2. Create Stripe checkout session

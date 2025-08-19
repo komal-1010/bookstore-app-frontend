@@ -45,7 +45,7 @@ export default function Cart() {
               <div key={item.id} className="cart-item">
                 <div>
                   <h4>{item.product_name}</h4>
-                  <p>Rs.{item.subtotal}</p>
+                  <p>${item.subtotal}</p>
                 </div>
                 <div className="actions">
                   <input
@@ -61,7 +61,7 @@ export default function Cart() {
             ))}
           </div>
           <div className="cart-summary">
-            <h3>Total: Rs.{cart.total_price}</h3>
+            <h3>Total: ${cart.total_price}</h3>
             <Link to="/checkout" className="btn">Proceed to Checkout</Link>
           </div>
         </>

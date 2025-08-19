@@ -13,9 +13,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("formData", formData)
       const res = await loginUser(formData)
-      console.log("res",res)
       localStorage.setItem('access_token', res.data.access);
       localStorage.setItem('refresh_token', res.data.refresh);
       alert('Login successful!');
