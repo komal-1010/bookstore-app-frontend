@@ -36,3 +36,6 @@ npm run dev # Vite
 
 
 App → http://localhost:3000
+Docker Run
+docker build -t bookstore-frontend .
+docker run -p 3000:80 --env-file .env bookstore-frontend
